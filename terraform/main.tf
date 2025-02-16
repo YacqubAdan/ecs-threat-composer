@@ -20,7 +20,7 @@ module "alb" {
     subnet_ids = module.vpc.public_subnets
     alb_name = "ecs-project-alb"
     target_group_name = "ecs-project-tg"
-    ecs_security_group_id = module.security_groups.ecs_sg_id
+    alb_sg_id = module.security_groups.alb_sg_id
     target_port = 3000
     cert_arn = module.route53.ssl_cert_arn
 }
