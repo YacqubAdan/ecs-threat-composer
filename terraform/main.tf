@@ -36,7 +36,7 @@ module "ecs" {
   c_cpu           = "2048"
   c_mem        = "4096"
   c_name     = "tc-container"
-  c_img    = "528757784671.dkr.ecr.us-east-1.amazonaws.com/tc-image:latest"
+  c_img    = "528757784671.dkr.ecr.eu-west-2.amazonaws.com/tc-image:latest"
   c_port     = 3000
   service_name       = "tc-service"
   desired_num      = 1
