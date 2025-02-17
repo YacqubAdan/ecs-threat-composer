@@ -38,11 +38,9 @@ jobs:
 
     - name: Terraform fmt
       run: terraform fmt -check
-      working-directory: terraform
 
     - name: Terraform validate
       run: terraform validate
-      working-directory: terraform
 
     - name: Run tflint
       uses: terraform-linters/setup-tflint@v4
