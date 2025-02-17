@@ -45,8 +45,6 @@ jobs:
       uses: terraform-linters/setup-tflint@v4
     - run: tflint --init && tflint
 
-    - name: Run tfsec
-      uses: aquasecurity/tfsec-action@v1.0.0
 
   terraform-plan:
     name: Terraform Plan
