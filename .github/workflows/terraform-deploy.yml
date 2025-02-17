@@ -59,7 +59,9 @@ jobs:
       uses: hashicorp/setup-terraform@v3  
 
     - name: Terraform Plan
-      run: terraform plan
+      run: | 
+        terraform init
+        terraform plan
       working-directory: terraform
 
   terraform-apply:
@@ -74,5 +76,7 @@ jobs:
       uses: hashicorp/setup-terraform@v3  
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      run: |
+        terraform init
+        terraform apply -auto-approve
       working-directory: terraform
