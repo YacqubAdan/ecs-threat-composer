@@ -1,0 +1,58 @@
+name: Terraform Destroy
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Type "yes" to confirm deployment'
+        required: true
+        default: 'no'
+jobs:
+  static-analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: If no confirmation, exit
+      run: |
+        if [ "${{ github.event.inputs.confirmation }}" != "yes" ]; then
+          echo "Exiting without deployment"
+          exit 1
+        fi
+      shell: bash
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3  
+
+    - name: Terraform init
+      run: terraform init
+      working-directory: terraform
+
+    - name: Terraform fmt
+      run: terraform fmt -check
+
+    - name: Terraform validate
+      run: terraform validate
+
+    - name: Run tflint
+      uses: terraform-linters/setup-tflint@v4
+    - run: tflint --init && tflint
+
+  terraform-destroy:
+    name: Terraform Destroy
+    runs-on: ubuntu-latest
+    needs: static-analysis
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3  
+
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
+      working-directory: terraform
+  
