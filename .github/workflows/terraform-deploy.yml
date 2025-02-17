@@ -34,12 +34,15 @@ jobs:
 
     - name: Terraform init
       run: terraform init
+      working-directory: terraform
 
     - name: Terraform fmt
       run: terraform fmt -check
+      working-directory: terraform
 
     - name: Terraform validate
       run: terraform validate
+      working-directory: terraform
 
     - name: Run tflint
       uses: terraform-linters/setup-tflint@v4
@@ -58,9 +61,8 @@ jobs:
       uses: hashicorp/setup-terraform@v3  
 
     - name: Terraform Plan
-      run: |
-        cd terraform  
-        terraform plan 
+      run: terraform plan
+      working-directory: terraform
 
   terraform-apply:
     name: Terraform Apply
@@ -74,6 +76,5 @@ jobs:
       uses: hashicorp/setup-terraform@v3  
 
     - name: Terraform Apply
-      run: |
-        cd terraform  
-        terraform apply -auto-approve
+      run: terraform apply -auto-approve
+      working-directory: terraform
