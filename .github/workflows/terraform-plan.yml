@@ -1,4 +1,4 @@
-name: Plan ECR Deployment
+name: Terraform Plan Pipeline
 
 on:
   pull_request:
