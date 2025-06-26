@@ -1,10 +1,10 @@
 output "exec_policy_arn" {
-  value = aws_iam_role.exec_role.arn
+  value       = aws_iam_role.exec_role.arn
   description = "The ARN of the ecs execution role"
 }
 
 output "exec_policy_name" {
-  value = aws_iam_role.exec_role.name
+  value       = aws_iam_role.exec_role.name
   description = "The name of the ecs execution role"
 }
 

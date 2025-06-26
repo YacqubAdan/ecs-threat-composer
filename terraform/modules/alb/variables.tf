@@ -4,15 +4,15 @@ variable "vpc_id" {
 }
 
 variable "subnet_ids" {
-    description = "The IDs of the subnets"
-    type        = list(string)
+  description = "The IDs of the subnets"
+  type        = list(string)
 }
 
 # ALB specific
 
 variable "alb_name" {
-    type        = string
-    description = "The name of the ALB"
+  type        = string
+  description = "The name of the ALB"
 }
 
 variable "target_group_name" {
@@ -32,6 +32,6 @@ variable "target_port" {
 }
 
 variable "cert_arn" {
-    type        = string
-    description = "ARN of the SSL certificate"
+  type        = string
+  description = "ARN of the SSL certificate"
 }
