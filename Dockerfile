@@ -2,7 +2,7 @@ FROM node:23-slim AS build
 
 WORKDIR /app
 
-COPY package*.json yarn.lock ./
+COPY app/package*.json yarn.lock ./
 
 RUN yarn install 
 
@@ -14,7 +14,7 @@ FROM node:23-alpine
 
 WORKDIR /app
 
-COPY --from=build /app/build ./build
+COPY --from=build /app/build app/build
 
 RUN addgroup -S nonroot && adduser -S nonroot -G nonroot
 
