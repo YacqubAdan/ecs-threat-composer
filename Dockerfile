@@ -6,7 +6,7 @@ COPY app/package*.json yarn.lock ./
 
 RUN yarn install 
 
-COPY . .
+COPY app/ .
 
 RUN yarn build
 
